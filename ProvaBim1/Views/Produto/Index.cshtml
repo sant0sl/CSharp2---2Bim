@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ProvaBim1.Models.Produto>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Listagem de Produtos</h2>
+<br />
+<div>
+    <ul>
+        <li>@Html.ActionLink("HOME", "Index", "Produto")</li>
+        <li>@Html.ActionLink("CELULAR", "IndexTipo", new { id = 1 })</li>
+        <li>@Html.ActionLink("TABLET", "IndexTipo", new { id = 2 })</li>
+        <li>@Html.ActionLink("NOTEBOOK", "IndexTipo", new { id = 3 })</li>
+        <li>@Html.ActionLink("CARREGADORES", "IndexTipo", new { id = 4 })</li>
+    </ul>
+</div>
+<br />
+<table width="100%">
+
+    <tr>
+        <td>ID</td>
+        <td>CATEGORIA</td>
+        <td>NOME</td>
+        <td>PRECO</td>
+        <td>DESCRICAO</td>
+        <td>MARCA</td>
+        <td>MODELO</td>
+        <td>-</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>@item.idProduto</td>
+        @if (item.categoria == 1)
+        {
+            <td>CELULAR</td>
+        }
+        else if (item.categoria == 2)
+        {
+            <td>TABLET</td>
+        }
+        else if (item.categoria == 3)
+        {
+            <td>NOTEBOOK</td>
+        }
+        else if (item.categoria == 4)
+        {
+            <td>CARREGADOR</td>
+        }
+        <td>@item.nome</td>
+        <td>@item.preco</td>
+        <td>@item.descricao</td>
+        <td>@item.marca</td>
+        <td>@item.modelo</td>
+        <td>@Html.ActionLink("Informacoes", "DadosProduto", new { id = item.idProduto })</td>
+    </tr>
+    }
+
+</table>

@@ -1,0 +1,30 @@
+﻿@model ProvaBim1.Models.Usuario
+@{
+    ViewBag.Title = "LoginAdmin";
+}
+
+@section cabecalho{
+
+}
+
+<h2>Ola, Administrador</h2>
+
+<form method="post">
+
+    @Html.ValidationSummary(true)
+    <br />
+    @Html.LabelFor(x => x.login)
+    @Html.TextBoxFor(x => x.login)
+    <br />
+    <br />
+    @Html.LabelFor(x => x.senha)
+    @Html.TextBoxFor(x => x.senha)
+    <br />
+    <br />
+    <input type="submit" value="Entrar" />
+
+</form>
+
+@section rodape{
+    
+}

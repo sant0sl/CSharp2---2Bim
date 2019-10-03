@@ -1,0 +1,58 @@
+﻿@model ProvaBim1.Models.Produto
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Cadastrar Produto</h2>
+
+<form method="post">
+
+    @Html.LabelFor(x => x.idProduto)
+    @Html.TextBoxFor(x => x.idProduto)
+    <br />
+    @Html.ValidationMessageFor(x => x.idProduto)
+    <br />
+    <br />
+    @Html.LabelFor(x => x.categoria)
+    @Html.TextBoxFor(x => x.categoria)
+    <br />
+    @Html.ValidationMessageFor(x => x.categoria)
+    <br />
+    <br />
+    @Html.LabelFor(x => x.nome)
+    @Html.TextBoxFor(x => x.nome)
+    <br />
+    @Html.ValidationMessageFor(x => x.nome)
+    <br />
+    <br />
+    @Html.LabelFor(x => x.preco)
+    @Html.TextBoxFor(x => x.preco)
+    <br />
+    @Html.ValidationMessageFor(x => x.preco)
+    <br />
+    <br />
+    @Html.LabelFor(x => x.descricao)
+    @Html.TextBoxFor(x => x.descricao)
+    <br />
+    @Html.ValidationMessageFor(x => x.descricao)
+    <br />
+    <br />
+    @Html.LabelFor(x => x.marca)
+    @Html.TextBoxFor(x => x.marca)
+    <br />
+    @Html.ValidationMessageFor(x => x.marca)
+    <br />
+    <br />
+    @Html.LabelFor(x => x.modelo)
+    @Html.TextBoxFor(x => x.modelo)
+    <br />
+    @Html.ValidationMessageFor(x => x.modelo)
+    <br />
+    <br />
+    <input type="submit" value="Salvar" />
+
+</form>
+
+@section rodape{
+
+}

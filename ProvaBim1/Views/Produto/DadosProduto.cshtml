@@ -1,0 +1,32 @@
+﻿@model ProvaBim1.Models.Produto
+@{
+    ViewBag.Title = "DadosProduto";
+}
+
+<h2>Dados do Produto</h2>
+
+@Html.ActionLink("Voltar", "Index", "Produto")
+<br />
+<br />
+@Html.LabelFor(x => x.nome)
+@Html.TextBoxFor(x => x.nome)
+<br />
+<br />
+@Html.LabelFor(x => x.preco)
+@Html.TextBoxFor(x => x.preco)
+<br />
+<br />
+@Html.LabelFor(x => x.descricao)
+@Html.TextBoxFor(x => x.descricao)
+<br />
+<br />
+@Html.LabelFor(x => x.marca)
+@Html.TextBoxFor(x => x.marca)
+<br />
+<br />
+@Html.LabelFor(x => x.modelo)
+@Html.TextBoxFor(x => x.modelo)
+
+@section rodape{
+    <h2>RODAPÉ DADOS DO PRODUTO</h2>
+}
