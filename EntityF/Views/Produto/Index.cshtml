@@ -1,0 +1,36 @@
+﻿@model IEnumerable<EntityF.Models.Produto>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Listagem de Produtos</h2>
+
+<br />
+
+@Html.ActionLink("Novo Produto", "Create")
+
+<br />
+
+<table width="100%" border="1">
+
+    <tr>
+        <td>ID</td>
+        <td>DESCRIÇÃO</td>
+        <td>QUANTIDADE</td>
+        <td>PREÇO DE VENDA</td>
+        <td>-</td>
+    </tr>
+    <br />
+    <br />
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id_Produto</td>
+            <td>@item.Descricao</td>
+            <td>@item.Quantidade</td>
+            <td>@item.Preco_Venda</td>
+            <td>@Html.ActionLink("Alterar", "Update", new { id = item.Id_Produto }) | @Html.ActionLink("Apagar", "Delete", new { id = item.Id_Produto })</td>
+        </tr>
+    }
+
+</table>

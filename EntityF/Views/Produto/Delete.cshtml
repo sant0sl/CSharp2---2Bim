@@ -1,0 +1,28 @@
+﻿@model EntityF.Models.Produto
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Apagar Produto</h2>
+
+<br />
+
+<form method="post">
+
+    @Html.ValidationSummary()
+    ID: @Html.TextBoxFor(x => x.Id_Produto)
+    <br />
+    DESCRIÇÃO: @Html.TextBoxFor(x => x.Descricao)
+    <br />
+    QUANTIDADE: @Html.TextBoxFor(x => x.Quantidade)
+    <br />
+    PREÇO DE VENDA: @Html.TextBoxFor(x => x.Preco_Venda)
+    <br />
+    <br />
+    Deseja realmente DELETAR este produto?
+    <br />
+    <input type="submit" value="SIM, QUERO!" />
+    <br />
+    @Html.ActionLink("NÃO", "Index")
+
+</form>

@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.705
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProvaBim1", "ProvaBim1\ProvaBim1.csproj", "{11A729B0-653B-4F99-935C-92028A142B49}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityF", "EntityF\EntityF.csproj", "{FA7258DD-4B02-447D-A764-B06C392A51DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{11A729B0-653B-4F99-935C-92028A142B49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11A729B0-653B-4F99-935C-92028A142B49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11A729B0-653B-4F99-935C-92028A142B49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA7258DD-4B02-447D-A764-B06C392A51DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA7258DD-4B02-447D-A764-B06C392A51DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA7258DD-4B02-447D-A764-B06C392A51DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA7258DD-4B02-447D-A764-B06C392A51DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

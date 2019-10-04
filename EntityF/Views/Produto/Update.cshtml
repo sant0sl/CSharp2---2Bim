@@ -1,0 +1,27 @@
+﻿@model EntityF.Models.Produto
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Alterar Produto</h2>
+
+<br />
+
+<form method="post">
+
+    @Html.ValidationSummary()
+    ID: @Html.TextBoxFor(x => x.Id_Produto)
+    <br />
+    DESCRIÇÃO: @Html.TextBoxFor(x => x.Descricao)
+    <br />
+    QUANTIDADE: @Html.TextBoxFor(x => x.Quantidade)
+    <br />
+    PREÇO DE VENDA: @Html.TextBoxFor(x => x.Preco_Venda)
+    <br />
+    <br />
+    <input type="submit" value="ALTERAR" />
+    <br />
+    <br />
+    @Html.ActionLink("CANCELAR", "Index")
+
+</form>
