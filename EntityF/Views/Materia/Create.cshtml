@@ -1,0 +1,29 @@
+﻿@model EntityF.Models.Materia
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Nova Materia</h2>
+
+<form>
+
+    @Html.LabelFor(x => x.Descricao)
+    @Html.TextBoxFor(x => x.Descricao)
+    <br />
+    <br />
+    @Html.LabelFor(x => x.Conteudo)
+    @Html.TextAreaFor(x => x.Conteudo, new { rows = 1, col = 3 })
+    <br />
+    <br />
+    @Html.LabelFor(x => x.Disponivel)
+    @Html.CheckBoxFor(x => x.Disponivel)
+    <br />
+    <br />
+    @Html.LabelFor(x => x.Excluido)
+    <label>SIM</label>@Html.RadioButtonFor(x => x.Excluido, "true")
+    <label>NAO</label>@Html.RadioButtonFor(x => x.Excluido, "false")
+    <br />
+    <br />
+    <label>Academico:</label>
+    @Html.DropDownList("Id_Academico", (IEnumerable<SelectListItem>)ViewBag.Academicos, "")
+</form>

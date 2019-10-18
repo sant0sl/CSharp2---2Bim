@@ -1,0 +1,51 @@
+﻿@model IEnumerable<EntityF.Models.Academico>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Lista de Academicos</h2>
+
+<br />
+
+<form method="post">
+
+
+    NOME: <input name="txtNome" id="txtNome" />
+    <br />
+    SEXO: <input name="txtSexo" id="txtSexo" />
+    <br />
+    ORDENACAO: <input name="txtOrd" id="txtOrd" />
+    <br />
+    QTD de REGISTROS: <input name="txtTake" id="txtTake" />
+    <br />
+    <input type="submit" value="BUSCAR"/>
+
+</form>
+
+<br />
+
+<table width="100%" border="1">
+
+    <tr>
+        <td>ID</td>
+        <td>NOME</td>
+        <td>SEXO</td>
+    </tr>
+    <br />
+    <br />
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id_Academico</td>
+            <td>@item.Nome</td>
+            <td>@item.Sexo</td>
+            <td>
+                @foreach(var nota in item.Nota)
+                {
+                    @nota.Nome_Materia<br />
+                }
+            </td>
+        </tr>
+    }
+
+</table>

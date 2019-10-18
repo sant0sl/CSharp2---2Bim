@@ -1,0 +1,33 @@
+﻿@model EntityF.Models.Academico
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<form method="post">
+
+    @Html.LabelFor(x => x.Nome)
+    @Html.TextBoxFor(x => x.Nome)
+    <br />
+    <br />
+    @Html.LabelFor(x => x.Sexo)
+    @Html.TextBoxFor(x => x.Sexo)
+    <br />
+    <br />
+    @Html.LabelFor(x => x.Ativo)
+    @Html.CheckBoxFor(x => x.Ativo)
+    <br />
+    <br />
+    @Html.LabelFor(x => x.Excluido)
+    <label>SIM</label>@Html.RadioButtonFor(x => x.Excluido, "true")
+    <label>NAO</label>@Html.RadioButtonFor(x => x.Excluido, "false")
+    <br />
+    <br />
+    <label>Materia Favorita:</label>
+    @Html.DropDownList("Id_Academico", (IEnumerable<SelectListItem>)ViewBag.Materias, "")
+    <br />
+    <br />
+    <input type="submit" value="SALVAR"/>
+
+</form>

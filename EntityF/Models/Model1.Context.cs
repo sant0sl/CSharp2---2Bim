@@ -25,6 +25,9 @@ namespace EntityF.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Academico> Academico { get; set; }
+        public virtual DbSet<Materia> Materia { get; set; }
+        public virtual DbSet<Nota> Nota { get; set; }
         public virtual DbSet<Produto> Produto { get; set; }
     }
 }

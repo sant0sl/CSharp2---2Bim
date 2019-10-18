@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<form id="IdForm">
+
+    @*<iframe src="https://www.unifacear.edu.br/" height="500" width="100%">
+
+        </iframe>
+
+        <iframe src="https://br.yahoo.com/" height="500" width="100%"></iframe>*@
+
+    <div>UNIFACEAR - Araucária - PR</div>
+    <br />
+    <div id="divCurso">Curso de Sistemas de Informacao</div>
+    <br />
+    <label class="aluno">NOME DO ALUNO: </label>
+    <input class="aluno" type="text" id="nome" name="nome" />
+    <label class="aluno">IDADE DO ALUNO: </label>
+    <input class="aluno" type="number" id="idade" name="idade" />
+    <br />
+    <br />
+    <div>
+        <input type="button" id="btnEvento" name="btnEvento" onclick="MudaCorVermelho()" value="VERMELHO" />
+        <input type="button" id="btnVerde" name="btnVerde" onclick="MudaCorPreto()" value="PRETO" />
+    </div>
+    
+
+</form>
+
+@section scripts{
+    <script>
+        //Executa somente depois que carregou todo o HTML
+        $(document).ready(function () {
+            //alert('Ola mundo');
+        });
+
+        function MudaCorVermelho() {
+            //alert('O botao foi clicado');
+            $("#divCurso").css("color", "red");
+            $("label.aluno").css("color", "red");
+            $("input.aluno").css("backgroundColor", "red");
+        }
+
+        function MudaCorPreto() {
+            //alert('O botao foi clicado');
+            $("#divCurso").css("color", "black");
+            $("label.aluno").css("color", "black");
+            $("input.aluno").css("backgroundColor", "white");
+        }
+
+    </script>
+}
