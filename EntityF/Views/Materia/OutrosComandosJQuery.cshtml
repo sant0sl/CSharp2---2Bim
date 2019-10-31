@@ -1,0 +1,133 @@
+﻿
+@{
+    ViewBag.Title = "OutrosComandosJQuery";
+}
+
+<h2>Outros Comandos JQuery</h2>
+
+<form>
+
+    <table width="100%">
+        <tr>
+            <td>NOME: <input type="text" id="txtNome" name="txtNome" /></td>
+            <td>SOBRENOME: <input type="text" id="txtSobrenome" name="txtSobrenome" /></td>
+            <td>NOME COMPLETO: <input type="text" id="txtNomeCompleto" name="txtNomeCompleto" /></td>
+            <td><input type="button" id="btnMostraNome" name="btnMostraNome" value="Pegar Nome" onclick="MostraNome()" /></td>
+            <td><input type="button" id="btnMostraNomeMsg" name="btnMostraNomeMsg" value="Mostra Msg" onclick="MostraNomeMsg()" /></td>
+            <td></td>
+            <td><input type="button" id="btnDesabilita" name="btnDesabilita" value="Desabilita Campos" onclick="DesabilitaCampo()" /></td>
+            <td><input type="button" id="btnHabilita" name="btnHabilita" value="Habilita Campos" onclick="HabilitaCampo()" /></td>
+        </tr>
+    </table>
+    <hr />
+    <div id="minhaDiv">
+
+    </div>
+    <input type="button" id="btnMostraHora" name="btnMostraHora" value="Mostra Hora" onclick="buscaHoraController()" />
+
+</form>
+
+@section scripts{
+    <script>
+        //ESTRUTURA PADRÃO PARA PEGAR INFORMAÇÕES DE UM CONTROLLER
+        @* function buscaController() {
+            $.ajax({
+                url:@Url.Action("METODO DO CONTROLLER"),
+            type: 'POST',
+                data: { },
+            success: function (data) {
+
+            },
+            error: function (data) {
+
+            }
+        });
+        }*@
+
+        //Pega as informações de um JSON do Controller
+        function buscaHoraController() {
+            $.ajax({
+                url:@Url.Action("RetornaHora()"),
+                type: 'POST',
+                data: {},
+                success: function (data) {
+                    alert(data.hora);
+                },
+                error: function (data) {
+
+                }
+            });
+        }
+
+        function buscaQTDController() {
+            $.ajax({
+                url:@Url.Action("RetornaQtdLetras()"),
+                type: 'POST',
+                data: {nome: "Leonardo"},
+                success: function (data) {
+                    alert(data.qtd);
+                },
+                error: function (data) {
+
+                }
+            });
+        }
+        
+        //Executa somente depois que carregou todo o HTML
+        $(document).ready(function () {
+            //Passa o valor de um campo para outro, em tempo real
+            $("#txtNome").on("keyup", function () {
+                $("#txtSobrenome").val($("#txtNome").val())
+            });
+
+            //executa tal método, em tal milissegundos após tudo carregado
+            //window.setTimeout('MostrarNumero()', 5000);
+
+            //executa tal método, a cada tal milissegundos após tudo carregado
+            //window.setInterval('MostrarHora()', 1000);
+        });
+        
+        function MostrarNumero() {
+            alert(1);
+        }
+
+        function MostrarHora() {
+            var dataHora = new Date();
+            var texto = "<h1 style='color:red'>" + dataHora.toDateString() + " / " + dataHora.toTimeString() + "</h1>";
+            $("#minhaDiv").html(texto);
+        }
+
+        function fechaAba() {
+            window.close();
+        }
+        
+        function HabilitaCampo() {
+            $("#txtNome").attr("disabled", false);
+            $("#txtSobrenome").attr("disabled", false);
+        }
+
+        function DesabilitaCampo() {
+            $("#txtNome").attr("disabled", true);
+            $("#txtSobrenome").attr("disabled", true);
+        }
+
+        function MostraNome() {
+            //Pega o conteúdo de um campo
+            //alert($("#txtNome").val() + " " + $("#txtSobrenome").val());
+
+            //Pegar e seta o conteúdo de um campo
+            //$("#txtSobrenome").val($("#txtNome").val())
+
+            //Seta no campo do nome completo com as informações de outros campos
+            $("#txtNomeCompleto").val($("#txtNome").val() + " " + $("#txtSobrenome").val())
+
+            //Executando uma função de um outro botão
+            $("#btnMostraNomeMsg").trigger("onclick");
+        }
+
+        function MostraNomeMsg() {
+            alert($("#txtNome").val() + " " + $("#txtSobrenome").val());
+        }
+
+    </script>    
+}

@@ -18,6 +18,32 @@ namespace EntityF.Controllers
             return View();
         }
 
+        public ActionResult OutrosComandosJQuery()
+        {
+            return View();
+        }
+
+        //enviando hora atual para o javascript
+        public JsonResult RetornaHora()
+        {
+            DateTime horaAtual = DateTime.Now;
+
+            return Json(new
+            {
+                hora = horaAtual.ToString("dd/MM/yyyy")
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult RetornaQtdLetras(string nome)
+        {
+            int qtd = nome.Length;
+
+            return Json(new
+            {
+                qtd
+            }, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Create()
         {
             //DropdownList

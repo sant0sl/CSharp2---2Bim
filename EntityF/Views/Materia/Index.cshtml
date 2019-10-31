@@ -13,21 +13,36 @@
 
         <iframe src="https://br.yahoo.com/" height="500" width="100%"></iframe>*@
 
-    <div>UNIFACEAR - Araucária - PR</div>
-    <br />
-    <div id="divCurso">Curso de Sistemas de Informacao</div>
-    <br />
-    <label class="aluno">NOME DO ALUNO: </label>
-    <input class="aluno" type="text" id="nome" name="nome" />
-    <label class="aluno">IDADE DO ALUNO: </label>
-    <input class="aluno" type="number" id="idade" name="idade" />
-    <br />
-    <br />
-    <div>
-        <input type="button" id="btnEvento" name="btnEvento" onclick="MudaCorVermelho()" value="VERMELHO" />
-        <input type="button" id="btnVerde" name="btnVerde" onclick="MudaCorPreto()" value="PRETO" />
+    <div id="divForm">
+
+        <div>UNIFACEAR - Araucária - PR</div>
+        <br />
+        <div>Curso de Sistemas de Informacao</div>
+        <br />
+        <label class="aluno">NOME DO ALUNO: </label>
+        <input class="aluno" type="text" id="nome" name="nome" />
+        <label class="aluno">IDADE DO ALUNO: </label>
+        <input class="aluno" type="number" id="idade" name="idade" />
+        <br />
+        <br />
+        <div>
+            <input type="button" id="btnEvento" name="btnEvento" onclick="MudaCorVermelho()" value="VERMELHO" />
+            <input type="button" id="btnVerde" name="btnVerde" onclick="MudaCorPreto()" value="PRETO" />
+        </div>
+        <br />
+        <br />
+
     </div>
-    
+    <hr />
+    <div id="divOlaMundo">
+        Olá mundo
+    </div>
+    <hr />
+    <input type="button" id="btnFazTudo" name="btnFazTudo" value="FAZ TUDO" onclick="fazTudo()"/>
+    <div>
+        <input type="button" id="btnAbreDiv" name="btnAbreDiv" onclick="MostraDIV()" value="Mostrar DIV" />
+        <input type="button" id="btnFechaDiv" name="btnFechaDiv" onclick="FechaDIV()" value="Esconder DIV" />
+    </div>
 
 </form>
 
@@ -38,19 +53,33 @@
             //alert('Ola mundo');
         });
 
+        function fazTudo() {
+            $("#divOlaMundo").slideToggle();
+        }
+
+        function MostraDIV() {
+            $("#divForm").show();
+            $("#btnFechaDiv").show();
+            $("#btnAbreDiv").hide();
+        }
+
+        function FechaDIV() {
+            $("#divForm").hide();
+            $("#btnFechaDiv").hide();
+            $("#btnAbreDiv").show();
+        }
+
         function MudaCorVermelho() {
             //alert('O botao foi clicado');
-            $("#divCurso").css("color", "red");
             $("label.aluno").css("color", "red");
             $("input.aluno").css("backgroundColor", "red");
         }
 
         function MudaCorPreto() {
             //alert('O botao foi clicado');
-            $("#divCurso").css("color", "black");
             $("label.aluno").css("color", "black");
             $("input.aluno").css("backgroundColor", "white");
         }
-
+        
     </script>
 }

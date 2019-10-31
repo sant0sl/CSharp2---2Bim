@@ -225,6 +225,7 @@
     <Content Include="Views\Academico\Create.cshtml" />
     <Content Include="Views\Materia\Create.cshtml" />
     <Content Include="Views\Materia\Index.cshtml" />
+    <Content Include="Views\Materia\OutrosComandosJQuery.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
