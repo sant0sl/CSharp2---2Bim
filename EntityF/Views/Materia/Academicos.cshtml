@@ -1,0 +1,123 @@
+﻿@model IEnumerable<EntityF.Models.Academico>
+@{
+    ViewBag.Title = "Academicos";
+}
+
+<h2>Academicos</h2>
+
+<form>
+
+    NOME: <input type="text" id="txtNome" name="txtNome" />
+    <br />
+    SEXO: <input type="text" id="txtSexo" name="txtSexo" />
+    <br />
+    IDADE: <input type="text" id="txtIdade" name="txtIdade" />
+    <br />
+    EXCLUIDO: <input type="text" id="txtExcluido" name="txtExcluido" />
+    <br />
+    ATIVO: <input type="text" id="txtAtivo" name="txtAtivo" />
+    <br />
+    <input type="submit" id="btnSalvar" name="btnSalvar" value="SALVAR" onclick="" />
+    <br />
+    <input type="button" id="btnNovaNota" name="btnNovaNota" value="Nova Nota" onclick="novaNota()" />
+
+</form>
+<br />
+<br />
+<div id="divNovaNota">
+    <form>
+
+        MATERIA: @Html.DropDownList("Id_Materia", (IEnumerable<SelectListItem>)ViewBag.Materias, "")
+        <br />
+        NOTA 1: <input type="text" id="txtNota1" name="txtNota1" />
+        <br />
+        NOTA 2: <input type="text" id="txtNota2" name="txtNota2" />
+        <br />
+        NOTA 3: <input type="text" id="txtNota3" name="txtNota3" />
+        <br />
+        NOTA 4: <input type="text" id="txtNota4" name="txtNota4" />
+        <br />
+        <br />
+        <input type="button" id="btnSalvarNota" name="btnSalvarNota" value="Salvar Nota" onclick="salvarNotaSessao()" />
+
+    </form>
+</div>
+<br />
+<br />
+<table id="divTabelaNotas">
+    <tbody></tbody>
+</table>
+
+@section scripts{
+    <script>
+
+        function montaTabelaHTML(listaNotas) {
+            $("#divTabelaNotas").remove("tbody tr");
+            for ($i = 0; $i < listaNotas.length; $i++) {
+                $("#divTabelaNotas").append("<tr><td>" + listaNotas[$i].Nome_Materia + " - " + listaNotas[$i].Nota_I + "</td></tr>");
+            }
+        }
+
+        function salvarNotaSessao() {
+            $("#divNovaNota").hide();
+            $.ajax({
+                url: '@Url.Action("salvarNota")',
+                type: 'POST',
+                data: {
+                    Id_Materia: $("Id_Materia").val(),
+                    nota1: $("txtNota1").val(),
+                    nota2: $("txtNota2").val(),
+                    nota3: $("txtNota3").val(),
+                    nota4: $("txtNota4").val()
+                },
+                success: function (data) {
+                    //Atualiza tabela de notas na seção
+                    montaTabelaHTML(data.listaDeNotas)
+                    $("#divNovaNota").hide();
+                    $("txtNota1").val("");
+                    $("txtNota2").val("");
+                    $("txtNota3").val("");
+                    $("txtNota4").val("");
+                },
+                error: function (data) {
+                    alert("ERROUUUU salvar nota")
+                }
+            });
+        }
+
+        function novaNota() {
+            $("#divNovaNota").show();
+        }
+
+        //Executa somente depois que carregou todo o HTML
+        $(document).ready(function () {
+            $("#divNovaNota").hide();
+        });
+
+
+
+
+        @*function montaTabelaLISTA(listaAcademicos) {
+            for ($i = 0; $i < listaAcademicos.length; $i++) {
+                $("#divAcademicosLISTA").append("<tr><td>" + listaAcademicos[$i].Id_Academico + " - " + listaAcademicos[$i].Nome + "</td></tr>");
+            }
+        }
+
+        function filtrarAcademico() {
+            $.ajax({
+                url: '@Url.Action("fitrarAcademicos")',
+                type: 'POST',
+                data: { nome: $("#txtNome").val() },
+                success: function (data) {
+                    //POPULA A DIV
+                    //$("#divAcademicos").html(data.tabelaAcademicos);
+                    montaTabelaLISTA(data.listaAcademico);
+                },
+                error: function (data) {
+                    alert("ERROUUUU")
+                }
+            });
+        }*@
+
+    </script>
+}

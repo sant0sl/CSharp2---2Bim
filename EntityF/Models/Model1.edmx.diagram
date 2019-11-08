@@ -4,13 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="36c246690282467688e7aa3afa59906d" Name="Diagram1">
-        <EntityTypeShape EntityType="facear_2019Model.Academico" Width="1.5" PointX="0.625" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="facear_2019Model.Materia" Width="1.5" PointX="2.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="facear_2019Model.Nota" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="facear_2019Model.Produto" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
-        <AssociationConnector Association="facear_2019Model.Fk_Materia" ManuallyRouted="false" />
-        <AssociationConnector Association="facear_2019Model.fk_Academico" />
+      <Diagram DiagramId="358506c7139c4a41b4c64b8a44ad6a67" Name="Diagram1">
+        <EntityTypeShape EntityType="facear_2019Model.Academico" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="facear_2019Model.Materia" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="facear_2019Model.Nota" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="facear_2019Model.Produto" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

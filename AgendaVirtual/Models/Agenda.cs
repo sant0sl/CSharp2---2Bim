@@ -7,19 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EntityF.Models
+namespace AgendaVirtual.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Nota
+    public partial class Agenda
     {
-        public int Id_Nota { get; set; }
-        public int Id_Academico { get; set; }
-        public string Nome_Materia { get; set; }
-        public decimal Nota_I { get; set; }
-        public decimal Nota_II { get; set; }
-        public decimal Nota_III { get; set; }
-        public decimal Nota_IV { get; set; }
+        public int Id_Anotacao { get; set; }
+        public string Anotacao { get; set; }
+        public string DataAnotacao { get; set; }
     }
 }

@@ -14,21 +14,11 @@ namespace EntityF.Models
     
     public partial class Academico
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Academico()
-        {
-            this.Nota = new HashSet<Nota>();
-        }
-    
         public int Id_Academico { get; set; }
         public string Nome { get; set; }
         public string Sexo { get; set; }
+        public string Idade { get; set; }
         public bool Excluido { get; set; }
         public bool Ativo { get; set; }
-        public int Materia_Fav { get; set; }
-    
-        public virtual Materia Materia { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Nota> Nota { get; set; }
     }
 }

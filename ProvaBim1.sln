@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProvaBim1", "ProvaBim1\Prov
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityF", "EntityF\EntityF.csproj", "{FA7258DD-4B02-447D-A764-B06C392A51DD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgendaVirtual", "AgendaVirtual\AgendaVirtual.csproj", "{786E951E-58CD-4E4E-B106-F8A7857EDCE1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FA7258DD-4B02-447D-A764-B06C392A51DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA7258DD-4B02-447D-A764-B06C392A51DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA7258DD-4B02-447D-A764-B06C392A51DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{786E951E-58CD-4E4E-B106-F8A7857EDCE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{786E951E-58CD-4E4E-B106-F8A7857EDCE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{786E951E-58CD-4E4E-B106-F8A7857EDCE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{786E951E-58CD-4E4E-B106-F8A7857EDCE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

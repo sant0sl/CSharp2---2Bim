@@ -14,19 +14,10 @@ namespace EntityF.Models
     
     public partial class Materia
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Materia()
-        {
-            this.Academico = new HashSet<Academico>();
-        }
-    
         public int Id_Materia { get; set; }
         public string Descricao { get; set; }
         public string Conteudo { get; set; }
         public bool Disponivel { get; set; }
         public bool Excluido { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Academico> Academico { get; set; }
     }
 }

@@ -23,7 +23,7 @@
     <div id="minhaDiv">
 
     </div>
-    <input type="button" id="btnMostraHora" name="btnMostraHora" value="Mostra Hora" onclick="buscaHoraController()" />
+    <input type="button" id="btnMostraHora" name="btnMostraHora" value="Mostra Hora" onclick="buscaQTDController()" />
 
 </form>
 
@@ -47,7 +47,7 @@
         //Pega as informações de um JSON do Controller
         function buscaHoraController() {
             $.ajax({
-                url:@Url.Action("RetornaHora()"),
+                url: '@Url.Action("RetornaHora")',
                 type: 'POST',
                 data: {},
                 success: function (data) {
@@ -61,9 +61,9 @@
 
         function buscaQTDController() {
             $.ajax({
-                url:@Url.Action("RetornaQtdLetras()"),
+                url: '@Url.Action("RetornaQtdLetras")',
                 type: 'POST',
-                data: {nome: "Leonardo"},
+                data: { nome: $("#txtNome").val(), sobrenome: $("#txtSobrenome").val() },
                 success: function (data) {
                     alert(data.qtd);
                 },

@@ -4,17 +4,17 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="facear_2019Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="facear_2019Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Academico">
           <Key>
             <PropertyRef Name="Id_Academico" />
           </Key>
-          <Property Name="Id_Academico" Type="int" Nullable="false" />
+          <Property Name="Id_Academico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nome" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Sexo" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="Idade" Type="nchar" MaxLength="3" Nullable="false" />
           <Property Name="Excluido" Type="bit" Nullable="false" />
           <Property Name="Ativo" Type="bit" Nullable="false" />
-          <Property Name="Materia_Fav" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Materia">
           <Key>
@@ -47,45 +47,14 @@
           <Property Name="Quantidade" Type="int" Nullable="false" />
           <Property Name="Preco_Venda" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
-        <Association Name="fk_Academico">
-          <End Role="Academico" Type="Self.Academico" Multiplicity="1" />
-          <End Role="Nota" Type="Self.Nota" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Academico">
-              <PropertyRef Name="Id_Academico" />
-            </Principal>
-            <Dependent Role="Nota">
-              <PropertyRef Name="Id_Academico" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Fk_Materia">
-          <End Role="Materia" Type="Self.Materia" Multiplicity="1" />
-          <End Role="Academico" Type="Self.Academico" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Materia">
-              <PropertyRef Name="Id_Materia" />
-            </Principal>
-            <Dependent Role="Academico">
-              <PropertyRef Name="Materia_Fav" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="facear_2019ModelStoreContainer">
           <EntitySet Name="Academico" EntityType="Self.Academico" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Materia" EntityType="Self.Materia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Nota" EntityType="Self.Nota" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Produto" EntityType="Self.Produto" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="fk_Academico" Association="Self.fk_Academico">
-            <End Role="Academico" EntitySet="Academico" />
-            <End Role="Nota" EntitySet="Nota" />
-          </AssociationSet>
-          <AssociationSet Name="Fk_Materia" Association="Self.Fk_Materia">
-            <End Role="Materia" EntitySet="Materia" />
-            <End Role="Academico" EntitySet="Academico" />
-          </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="facear_2019Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -93,14 +62,12 @@
           <Key>
             <PropertyRef Name="Id_Academico" />
           </Key>
-          <Property Name="Id_Academico" Type="Int32" Nullable="false" />
+          <Property Name="Id_Academico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Sexo" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Idade" Type="String" MaxLength="3" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Excluido" Type="Boolean" Nullable="false" />
           <Property Name="Ativo" Type="Boolean" Nullable="false" />
-          <Property Name="Materia_Fav" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Materia" Relationship="Self.Fk_Materia" FromRole="Academico" ToRole="Materia" />
-          <NavigationProperty Name="Nota" Relationship="facear_2019Model.fk_Academico" FromRole="Academico" ToRole="Nota" />
         </EntityType>
         <EntityType Name="Materia">
           <Key>
@@ -111,7 +78,6 @@
           <Property Name="Conteudo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Disponivel" Type="Boolean" Nullable="false" />
           <Property Name="Excluido" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Academico" Relationship="Self.Fk_Materia" FromRole="Materia" ToRole="Academico" />
         </EntityType>
         <EntityType Name="Nota">
           <Key>
@@ -124,7 +90,6 @@
           <Property Name="Nota_II" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Nota_III" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Nota_IV" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-          <NavigationProperty Name="Academico" Relationship="facear_2019Model.fk_Academico" FromRole="Nota" ToRole="Academico" />
         </EntityType>
         <EntityType Name="Produto">
           <Key>
@@ -135,44 +100,12 @@
           <Property Name="Quantidade" Type="Int32" Nullable="false" />
           <Property Name="Preco_Venda" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
-        <Association Name="Fk_Materia">
-          <End Role="Materia" Type="Self.Materia" Multiplicity="1" />
-          <End Role="Academico" Type="Self.Academico" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Materia">
-              <PropertyRef Name="Id_Materia" />
-            </Principal>
-            <Dependent Role="Academico">
-              <PropertyRef Name="Materia_Fav" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="facear_2019Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Academico" EntityType="Self.Academico" />
           <EntitySet Name="Materia" EntityType="Self.Materia" />
           <EntitySet Name="Nota" EntityType="Self.Nota" />
           <EntitySet Name="Produto" EntityType="Self.Produto" />
-          <AssociationSet Name="Fk_Materia" Association="Self.Fk_Materia">
-            <End Role="Materia" EntitySet="Materia" />
-            <End Role="Academico" EntitySet="Academico" />
-          </AssociationSet>
-          <AssociationSet Name="fk_Academico" Association="facear_2019Model.fk_Academico">
-            <End Role="Academico" EntitySet="Academico" />
-            <End Role="Nota" EntitySet="Nota" />
-          </AssociationSet>
         </EntityContainer>
-        <Association Name="fk_Academico">
-          <End Type="facear_2019Model.Academico" Role="Academico" Multiplicity="1" />
-          <End Type="facear_2019Model.Nota" Role="Nota" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Academico">
-              <PropertyRef Name="Id_Academico" />
-            </Principal>
-            <Dependent Role="Nota">
-              <PropertyRef Name="Id_Academico" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -185,9 +118,9 @@
                 <ScalarProperty Name="Id_Academico" ColumnName="Id_Academico" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
                 <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="Idade" ColumnName="Idade" />
                 <ScalarProperty Name="Excluido" ColumnName="Excluido" />
                 <ScalarProperty Name="Ativo" ColumnName="Ativo" />
-                <ScalarProperty Name="Materia_Fav" ColumnName="Materia_Fav" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

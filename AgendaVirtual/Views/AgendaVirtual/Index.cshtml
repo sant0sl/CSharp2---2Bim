@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>MINHA AGENDA VIRTUAL</h2>
+
+<br />
+
+<form>
+
+    ID: <input type="text" id="txtID" name="txtID" />
+    <br />
+    ANOTAÇÃO: <input type="text" id="txtAnotacao" name="txtAnotacao" />
+    <br />
+    DATA: <input type="datetime" id="txtData" name="txtData" />
+    <br />
+    <br />
+    <input type="button" id="btnSalvar" name="btnSalvar" value="SALVAR" onclick="Salvar()" />
+    <br />
+
+</form>
+
+<br />
+
+<table id="divAnotacoes">
+    <tbody></tbody>
+</table>
+
+@section scripts{
+    <script>
+
+        $(document).ready(function () {
+            //$("#txtID").attr("disabled", true);
+            $("#txtID").val("0")
+            $("#divAnotacoes").show();
+            $.ajax({
+                url: '@Url.Action("MostrarTudo")',
+                type: 'POST',
+                data: { },
+                success: function (data) {
+                    montaTabelaHTML(data.listaAnotacoes);
+                },
+                error: function (data) {
+
+                }
+            });
+        });
+
+        function montaTabelaHTML(listaAnotacoes) {
+            $("#divAnotacoes tbody tr").remove();
+            for ($i = 0; $i < listaAnotacoes.length; $i++) {
+                $("#divAnotacoes").append("<tr><td>" + listaAnotacoes[$i].Id_Anotacao + " - " + listaAnotacoes[$i].DataAnotacao + " - " + listaAnotacoes[$i].Anotacao + "</td></tr>");
+            }
+        }
+
+        function Salvar() {
+            $.ajax({
+                url: '@Url.Action("Salvar")',
+                type: 'POST',
+                data: {
+                    id: $("#txtID").val(),
+                    anotacao: $("#txtAnotacao").val(),
+                    data: $("#txtData").val()
+                },
+                success: function (data) {
+                    alert(data.msgRetorno);
+                    montaTabelaHTML(data.listaAnotacoes);
+                    $("#txtID").val("0");
+                    $("#txtAnotacao").val("");
+                    $("#txtData").val("");
+                },
+                error: function (data) {
+
+                }
+            });
+        }
+
+        function Alterar(id, anotacao, data) {
+            $("#txtID").val(id);
+            $("#txtAnotacao").val(anotacao);
+            $("#txtData").val(data);
+        }
+
+        function Excluir() {
+            $.ajax({
+                url: '@Url.Action("Excluir")',
+                type: 'POST',
+                data: { id: $("txtID").val() },
+                success: function (data) {
+                    alert(data.msgRetorno);
+                    montaTabelaHTML(data.listaAnotacoes);
+                },
+                error: function (data) {
+                    $("#txtAnotacao").val("erro")
+                }
+            });
+        }
+
+    </script>
+}
